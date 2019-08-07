@@ -43,4 +43,13 @@ app.use(
   })
 );
 
+app.use(
+  "/nodejsapp/youtube",
+  proxy({
+    target: "http://localhost:8008/",
+    changeOrigin: true,
+    pathRewrite: path => path.replace(/^\/nodejsapp/, "")
+  })
+);
+
 app.listen(30080);
