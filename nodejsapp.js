@@ -62,4 +62,13 @@ app.use(
   })
 );
 
-app.listen(30080);
+app.use(
+  "/nodejsapp/cam-rikt-ru",
+  proxy({
+    target: "http://cam.rikt.ru/",
+    changeOrigin: true,
+    pathRewrite: path => path.replace(/^\/nodejsapp\/cam-rikt-ru/, "")
+  })
+);
+
+http: app.listen(30080);
