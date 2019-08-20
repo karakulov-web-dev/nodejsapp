@@ -52,4 +52,14 @@ app.use(
   })
 );
 
+app.use(
+  "/nodejsapp/forpost-app-server-side",
+  proxy({
+    target: "http://localhost:8009/",
+    changeOrigin: true,
+    pathRewrite: path =>
+      path.replace(/^\/nodejsapp\/forpost-app-server-side/, "")
+  })
+);
+
 app.listen(30080);
